@@ -449,9 +449,15 @@ if __name__ == '__main__':
     slides_mel = sorted(os.listdir(os.path.join(args.slide_path, "Tumor")))  # 获取所有肿瘤slide切片的名字
     slides_nev = sorted(os.listdir(os.path.join(args.slide_path, "Normal")))  # Normal
     slides = []  # 'Tumor/60890_0-Tumor-0.ndpi'，'Normal/80308_0-Normal-0.ndpi'
-    for i, j in zip(slides_mel, slides_nev):  # 这样就控制了两个数据必须保持一致
+#     for i, j in zip(slides_mel, slides_nev):  # 这样就控制了两个数据必须保持一致
+#         slides.append('Tumor/' + i)  # melanoma
+#         slides.append('Normal/' + j)  # Normal
+    
+    for i in slides_mel:  
         slides.append('Tumor/' + i)  # melanoma
+    for j in slides_nev):  
         slides.append('Normal/' + j)  # Normal
+        
 
 
     # os.path.isfile()函数判断slide是否存在，先执行if语句，值执行for循环
@@ -459,10 +465,10 @@ if __name__ == '__main__':
 
     for name in slides:
         disease_name,slide_name =  name.split("/")
-    # for disease_name in os.listdir(args.slide_path):
-    #     for slide_name in os.listdir(os.path.join(args.slide_path, disease_name)):
-
-        print("-----------------开始处理第{}张{}病理图片！---------------------".format(slide_num, slide_name))
+        sn,_ = os.path.splitext(slide_name)
+        pthnames = sn + ".pth"
+        if os.path.isfile(os.path.join(args.save_pth, pthnames)) is False: #如果该文件不存在则继续
+            print("-----------------开始处理第{}张{}病理图片！---------------------".format(slide_num, slide_name))
         slide_path = os.path.join(os.path.join(args.slide_path, disease_name), slide_name)
         slide = ol.OpenSlide(slide_path)
         contours_tissue, holes_tissue = seg_slide(slide=slide, seg_level=args.level, patch_size=args.patch_size)
@@ -480,6 +486,8 @@ if __name__ == '__main__':
                 "targets": target,
                 "level": args.level
             }, os.path.join(args.save_pth, "{}.pth".format(sn))) #存储提取点的文件.pth文件，xxx.svs,
+        # slide_path = “/home/omnisky/verybigdisk/CAMELYON16/training/Tumor/Tumor_075.tif”
+        
         file_name.append(slide_path)
         grids.append(grid)
         targets.append(target)
@@ -497,9 +505,7 @@ if __name__ == '__main__':
         stitch_path = os.path.join(args.save_pth,
                                    "ST"+sn + '.png')
         heatmap.save(stitch_path)
-
-
-
+        
 
     torch.save({
         "slides": file_name,
