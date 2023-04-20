@@ -68,5 +68,7 @@ downsample = slide.level_downsamples[0] # 访问第0层图像的下采样因子
 
 
 sudo apt-get install openslide-tools
+
 sudo apt-get install python-openslide
+
 在Windows系统下，可以从OpenSlide官网（https://openslide.org/download/）下载相应版本的OpenSlide二进制文件并安装。
