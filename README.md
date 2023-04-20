@@ -23,7 +23,9 @@ reference [CLAM](https://github.com/mahmoodlab/CLAM)
 ## openslide
 在OpenSlide库中，常用的属性包括：
 
-OpenSlide中的properties属性指的是图像的元数据，包括图像的大小、物理分辨率、扫描仪的制造商、扫描日期等信息。这些元数据通常是从扫描仪设备中提取出来的，可以用于描述图像的属性和特征，帮助人们更好地理解和处理图像数据。使用OpenSlide.properties['name']
+OpenSlide中的properties属性指的是图像的元数据，包括图像的大小、物理分辨率、扫描仪的制造商、扫描日期等信息。这些元数据通常是从扫描仪设备中提取出来的，可以用于描述图像的属性和特征，帮助人们更好地理解和处理图像数据.
+
+使用OpenSlide.properties['name']
 
 openslide.level-count：图像的层级数量。
 
@@ -58,4 +60,4 @@ level_count = slide.level_count # 访问图像的层级数量
 downsample = slide.level_downsamples[0] # 访问第0层图像的下采样因子
 
 'aperio.AppMag'是OpenSlide库中一个元数据属性，它表示扫描镜头的物理放大倍数。'aperio.AppMag'代表着APERIO扫描仪的物理放大倍数，是一个实际值而非计算值，通常以整数表示，例如 40、 20 等。在OpenSlide库中，可以使用openslide_get_property_value()函数来获取该属性的值。
-'aperio.AppMag'是OpenSlide库中一个元数据属性，它表示扫描镜头的物理放大倍数。'aperio.AppMag'代表着APERIO扫描仪的物理放大倍数，是一个实际值而非计算值，通常以整数表示，例如 40、 20 等。在OpenSlide库中，可以使用openslide_get_property_value()函数来获取该属性的值。
+
