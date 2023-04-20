@@ -47,3 +47,25 @@ image = slide.read_region((0, 0), 0, slide.level_dimensions[0])
 
 # 访问第1层图像(下采样因子为4)的指定区域像素
 region = slide.read_region((x, y), 1, (w, h))
+
+
+import openslide
+
+# 打开SVS文件
+slide = openslide.OpenSlide('example.svs')
+
+# 获取level 3的倍率和大小
+level = 3
+downsample = slide.level_downsamples[level]
+level_size = slide.level_dimensions[level]
+
+# 计算在level 0中的坐标和区域大小
+x, y = int(120 * downsample), int(120 * downsample)
+w, h = int(224 * downsample), int(224 * downsample)
+
+# 读取区域
+region = slide.read_region((x, y), level, (w, h))
+
+# 显示图像
+region.show()
+
