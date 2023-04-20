@@ -61,7 +61,7 @@ downsample = slide.level_downsamples[0] # 访问第0层图像的下采样因子
 
 'aperio.AppMag'是OpenSlide库中一个元数据属性，它表示扫描镜头的物理放大倍数。'aperio.AppMag'代表着APERIO扫描仪的物理放大倍数，是一个实际值而非计算值，通常以整数表示，例如 40、 20 等。在OpenSlide库中，可以使用openslide_get_property_value()函数来获取该属性的值。
 
-## OpenSlide库需
+## OpenSlide安装
 
 安装OpenSlide库
 在Linux系统下，可以使用以下命令安装OpenSlide库：
