@@ -55,7 +55,9 @@ openslide.objective-power：扫描镜头的物理放大倍数。
 
 
 width, height = slide.dimensions # 访问图像宽度和高度
+
 level_count = slide.level_count # 访问图像的层级数量
+
 downsample = slide.level_downsamples[0] # 访问第0层图像的下采样因子
 
 'aperio.AppMag'是OpenSlide库中一个元数据属性，它表示扫描镜头的物理放大倍数。'aperio.AppMag'代表着APERIO扫描仪的物理放大倍数，是一个实际值而非计算值，通常以整数表示，例如 40、 20 等。在OpenSlide库中，可以使用openslide_get_property_value()函数来获取该属性的值。
