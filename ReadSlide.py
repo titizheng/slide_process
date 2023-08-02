@@ -59,9 +59,9 @@ level = 3
 downsample = slide.level_downsamples[level]
 level_size = slide.level_dimensions[level]
 
-# 计算在level 0中的坐标和区域大小
-x, y = int(120 * downsample), int(120 * downsample)
-w, h = int(224 * downsample), int(224 * downsample)
+# # 计算在level 0中的坐标和区域大小
+# x, y = int(120 * downsample), int(120 * downsample)
+# w, h = int(224 * downsample), int(224 * downsample)
 
 # 读取区域
 region = slide.read_region((x, y), level, (w, h))
@@ -69,9 +69,3 @@ region = slide.read_region((x, y), level, (w, h))
 # 显示图像
 region.show()
 
-'''在OpenSlide中，不同层级的大小和分辨率是不同的。在最高分辨率下，原始大图像的大小对应着层级0的大小，
-因此，读取区域的大小是相对于层级0的大小而言的。如果我们要读取其他层级中的区域，
-OpenSlide库会自动计算该层级的大小和分辨率，并返回相应的瓦片'''
-
-'''slide.read_region函数中的第一个参数(x, y)表示读取区域的左上角在整个大图像中的位置坐标。
-这个位置是相对于整个大图像（level 0）的坐标。不管读取的是哪个层级的瓦片，这个坐标都是相对于整个大图像的坐标。'''
